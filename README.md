@@ -2,9 +2,9 @@
 
 # Ansible Role: Hugo
 
-This role will assume the setup the static site generator: Hugo (http://gohugo.io/) 
+This role will assume the setup of the static site generator Hugo (http://gohugo.io/) 
 
-It's part of the ELAO Ansible Stack but can be used as a stand alone component for usecase chekout [Manalas project](http://manalas.com).
+It's part of the ELAO Ansible Stack but can be used as a stand alone component for use case please refer to [Manalas project](http://manalas.com).
 
 ## Requirements
 
