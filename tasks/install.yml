@@ -1,0 +1,26 @@
+---
+
+- name: install > Check package
+  command: "dpkg -s hugo"
+  always_run: yes
+  failed_when: false
+  changed_when: false
+  register: _elao_hugo_package_check_output
+
+- name: install > Copy package
+  get_url:
+    url:  https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_amd64.deb
+    dest: "/tmp/hugo_{{ elao_hugo_version }}_amd64.deb"
+    mode: 0440
+  when: _elao_hugo_package_check_output.rc != 0
+
+- name: install > Install package
+  apt:
+    deb: "/tmp/hugo_{{ elao_hugo_version }}_amd64.deb"
+  when: _elao_hugo_package_check_output.rc != 0
+
+- name: install > Remove package
+  file:
+    path:  "/tmp/hugo_{{ elao_hugo_version }}_amd64.deb"
+    state: absent
+  when: _elao_hugo_package_check_output.rc != 0
